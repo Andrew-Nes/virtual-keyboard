@@ -9,3 +9,23 @@ favicon.src = '../public/favicon.ico';
 favicon.rel = 'shortcut icon';
 favicon.type = 'image/x-icon';
 htmlHead.append(favicon);
+
+// main container
+const page = document.createElement('main');
+page.classList.add('keyboard-page');
+htmlBody.append(page);
+
+// keyboard container
+const keyboardContainer = document.createElement('div');
+keyboardContainer.classList.add('keyboard-container');
+page.append(keyboardContainer);
+
+// text area
+const textArea = document.createElement('textarea');
+textArea.classList.add('text-area');
+keyboardContainer.append(textArea);
+
+// keyboard
+const keyboard = document.createElement('div');
+keyboard.classList.add('keyboard');
+keyboardContainer.append(keyboard);
