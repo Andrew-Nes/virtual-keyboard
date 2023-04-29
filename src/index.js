@@ -1,4 +1,6 @@
 import './style.scss';
+// eslint-disable-next-line import/no-cycle
+import createKey from './components/key/keys';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -29,3 +31,12 @@ keyboardContainer.append(textArea);
 const keyboard = document.createElement('div');
 keyboard.classList.add('keyboard');
 keyboardContainer.append(keyboard);
+export default { keyboard };
+
+// render keys
+async function renderKeys() {
+  const responce = await fetch('./keys.json');
+  const keysInfo = await responce.json();
+  keysInfo[0].keys.forEach((el) => createKey(el));
+}
+renderKeys();

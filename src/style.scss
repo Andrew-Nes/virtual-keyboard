@@ -53,7 +53,7 @@ a {
 }
 
 .keyboard-container {
-  width: 80%;
+  width: 95%;
   height: 70%;
   max-width: 1200px;
 }
@@ -66,8 +66,13 @@ a {
 }
 
 .keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
   width: 95%;
-  height: 70%;
   margin: 10px auto;
+  padding: 5px;
   background-color: rgb(194, 189, 189);
+
 }
