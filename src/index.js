@@ -43,11 +43,11 @@ renderKeys();
 
 // sync keys with physical keyboard
 window.addEventListener('keydown', (event) => {
-  const pressedKey = document.querySelector(`div[data-value = '${event.key.toLowerCase()}']`);
-  pressedKey.classList.add('active');
+  const pressedKeys = document.querySelectorAll(`div[data-value = '${event.key.toLowerCase()}']`);
+  pressedKeys.forEach((el) => el.classList.add('active'));
 });
 
 window.addEventListener('keyup', (event) => {
-  const pressedKey = document.querySelector(`div[data-value = '${event.key.toLowerCase()}']`);
-  pressedKey.classList.remove('active');
+  const pressedKeys = document.querySelectorAll(`div[data-value = '${event.key.toLowerCase()}']`);
+  pressedKeys.forEach((el) => el.classList.remove('active'));
 });
