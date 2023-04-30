@@ -40,3 +40,14 @@ async function renderKeys() {
   keysInfo[0].keys.forEach((el) => createKey(el));
 }
 renderKeys();
+
+// sync keys with physical keyboard
+window.addEventListener('keydown', (event) => {
+  const pressedKey = document.querySelector(`div[data-value = '${event.key.toLowerCase()}']`);
+  pressedKey.classList.add('active');
+});
+
+window.addEventListener('keyup', (event) => {
+  const pressedKey = document.querySelector(`div[data-value = '${event.key.toLowerCase()}']`);
+  pressedKey.classList.remove('active');
+});

@@ -143,12 +143,12 @@
       "size": "standard"
     },
     {
-      "value": "Del",
+      "value": "Delete",
       "alt": null,
       "size": "standard"
     },
     {
-      "value": "Caps",
+      "value": "CapsLock",
       "alt": null,
       "size": "double"
     },
@@ -283,7 +283,7 @@
       "size": "standard"
     },
     {
-      "value": "Ctrl",
+      "value": "Control",
       "alt": null,
       "size": "bigger"
     },
@@ -308,7 +308,7 @@
       "size": "standard"
     },
     {
-      "value": "Ctrl",
+      "value": "Control",
       "alt": null,
       "size": "bigger"
     },

@@ -30,3 +30,14 @@
   left: 5px;
 }
 
+.key:hover,
+.key.focus {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(85, 80, 80);
+}
+.key:active,
+.key.active {
+  border: 1px solid black;
+  background-color: black;
+}
