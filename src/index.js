@@ -1,7 +1,7 @@
 import './style.scss';
-// eslint-disable-next-line import/no-cycle
 import createKey from './components/key/keys';
 import regularKeyPress from './components/regular-key-action/regular-key-action';
+import capsLockAction from './components/caps-lock-action/caps-lock-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -39,6 +39,10 @@ async function renderKeys() {
   const responce = await fetch('./keys.json');
   const keysInfo = await responce.json();
   keysInfo[0].keys.forEach((el) => createKey(el));
+  const capsLockKey = document.querySelector('.key[data-value = capslock]');
+  const capsLockIndicator = document.createElement('div');
+  capsLockIndicator.classList.add('capslock-indicator');
+  capsLockKey.append(capsLockIndicator);
 }
 renderKeys();
 
@@ -55,8 +59,17 @@ window.addEventListener('keyup', (event) => {
 
 // add regular keys action
 keyboard.addEventListener('click', (event) => {
+  const caps = document.querySelector('.capslock-indicator').classList.contains('active');
   let shift = false;
   if (event.shiftKey) shift = true;
   const target = event.target.closest('.key');
-  regularKeyPress(target, shift);
+  regularKeyPress(target, shift, caps);
+});
+
+// add caps lock action
+keyboard.addEventListener('click', (event) => {
+  if (event.target.closest('.key') === document.querySelector('.key[data-value = capslock]')) capsLockAction();
+});
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'CapsLock') capsLockAction();
 });
