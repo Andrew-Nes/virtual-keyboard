@@ -10,7 +10,7 @@ export default function createKey(element) {
     keyAlt.classList.add('key-alt');
     keyAlt.innerHTML = `${element.alt}`;
     key.append(keyAlt);
-    key.setAttribute('data-alt-value', `${element.alt}`);
+    key.setAttribute('data-altvalue', `${element.alt}`);
   }
   if (element.value === 'Win') {
     key.setAttribute('data-value', 'meta');

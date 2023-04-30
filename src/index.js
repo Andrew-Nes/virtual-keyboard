@@ -1,6 +1,7 @@
 import './style.scss';
 // eslint-disable-next-line import/no-cycle
 import createKey from './components/key/keys';
+import regularKeyPress from './components/regular-key-action/regular-key-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -50,4 +51,12 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
   const pressedKeys = document.querySelectorAll(`div[data-value = '${event.key.toLowerCase()}']`);
   pressedKeys.forEach((el) => el.classList.remove('active'));
+});
+
+// add regular keys action
+keyboard.addEventListener('click', (event) => {
+  let shift = false;
+  if (event.shiftKey) shift = true;
+  const target = event.target.closest('.key');
+  regularKeyPress(target, shift);
 });
