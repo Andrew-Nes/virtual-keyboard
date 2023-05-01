@@ -5,6 +5,7 @@ import capsLockAction from './components/caps-lock-action/caps-lock-action';
 import spaceAction from './components/space-action/space-action';
 import arrowsAction from './components/arrows-action/arrows-action';
 import tabAction from './components/tab-action/tab-action';
+import enterAction from './components/enter-action/enter-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -113,4 +114,11 @@ keyboard.addEventListener('click', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = tab]')
   ) tabAction();
+});
+
+// add enter action
+keyboard.addEventListener('click', (event) => {
+  if (
+    event.target.closest('.key') === document.querySelector('.key[data-value = enter]')
+  ) enterAction();
 });
