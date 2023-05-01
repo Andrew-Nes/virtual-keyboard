@@ -10,6 +10,7 @@ import backspaceAction from './components/backspace-action/backspace-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
+let language = localStorage.getItem('lang') || 'en';
 
 // favicon
 const favicon = document.createElement('link');
@@ -41,9 +42,12 @@ export default { keyboard };
 
 // render keys
 async function renderKeys() {
+  keyboard.innerHTML = '';
   const responce = await fetch('./keys.json');
   const keysInfo = await responce.json();
-  keysInfo[0].keys.forEach((el) => createKey(el));
+  let index = 0;
+  if (language === 'ru') index = 1;
+  keysInfo[index].keys.forEach((el) => createKey(el));
   const capsLockKey = document.querySelector('.key[data-value = capslock]');
   const capsLockIndicator = document.createElement('div');
   capsLockIndicator.classList.add('capslock-indicator');
@@ -129,4 +133,24 @@ keyboard.addEventListener('click', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = backspace]')
   ) backspaceAction();
+});
+
+// language toggle
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Alt') {
+    event.preventDefault();
+    const alt = document.querySelector('.key[data-value = alt]');
+    const shift = document.querySelector('.key[data-value = shift]');
+    if (alt.classList.contains('active') && shift.classList.contains('active')) {
+      if (language === 'en') {
+        language = 'ru';
+        renderKeys();
+        window.localStorage.setItem('lang', language);
+      } else {
+        language = 'en';
+        renderKeys();
+        window.localStorage.setItem('lang', language);
+      }
+    }
+  }
 });

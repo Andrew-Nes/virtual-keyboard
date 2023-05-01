@@ -330,6 +330,328 @@
 {
   "language": "ru",
   "keys": [
+    {
+      "value": "Ё",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "1",
+      "alt": "!",
+      "size": "standard"
+    },
+    {
+      "value": "2",
+      "alt": "\"",
+      "size": "standard"
+    },
+    {
+      "value": "3",
+      "alt": "№",
+      "size": "standard"
+    },
+    {
+      "value": "4",
+      "alt": ";",
+      "size": "standard"
+    },
+    {
+      "value": "%",
+      "alt": "%",
+      "size": "standard"
+    },
+    {
+      "value": "6",
+      "alt": ":",
+      "size": "standard"
+    },
+    {
+      "value": "7",
+      "alt": "?",
+      "size": "standard"
+    },
+    {
+      "value": "8",
+      "alt": "*",
+      "size": "standard"
+    },
+    {
+      "value": "9",
+      "alt": "(",
+      "size": "standard"
+    },
+    {
+      "value": "0",
+      "alt": ")",
+      "size": "standard"
+    },
+    {
+      "value": "-",
+      "alt": "_",
+      "size": "standard"
+    },
+    {
+      "value": "=",
+      "alt": "+",
+      "size": "standard"
+    },
+    {
+      "value": "Backspace",
+      "alt": null,
+      "size": "double"
+    },
+    {
+      "value": "Tab",
+      "alt": null,
+      "size": "bigger"
+    },
+    {
+      "value": "Й",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ц",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "У",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "К",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Е",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Н",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Г",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ш",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Щ",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "З",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Х",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ъ",
+      "size": "standard"
+    },
+    {
+      "value": "\\",
+      "alt": "/",
+      "size": "standard"
+    },
+    {
+      "value": "Delete",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "CapsLock",
+      "alt": null,
+      "size": "double"
+    },
+    {
+      "value": "Ф",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ы",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "В",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "А",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "П",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Р",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "О",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Л",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Д",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ж",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Э",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Enter",
+      "alt": null,
+      "size": "double"
+    },
+    {
+      "value": "Shift",
+      "alt": null,
+      "size": "double"
+    },
+    {
+      "value": "\\",
+      "alt": "/",
+      "size": "standard"
+    },
+    {
+      "value": "Я",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ч",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "С",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "М",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "И",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Т",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ь",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Б",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Ю",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": ".",
+      "alt": ",",
+      "size": "standard"
+    },
+    {
+      "value": "↑",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Shift",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Control",
+      "alt": null,
+      "size": "bigger"
+    },
+    {
+      "value": "Win",
+      "alt": null,
+      "size": "bigger"
+    },
+    {
+      "value": "Alt",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": " ",
+      "alt": null,
+      "size": "spacebar"
+    },
+    {
+      "value": "Alt",
+      "alt": null,
+      "size": "standard"
+    },
+    {
+      "value": "Control",
+      "alt": null,
+      "size": "bigger"
+    },
+    {
+      "value": "←",
+      "alt": null,
+      "size": "standard"
+    },{
+      "value": "↓",
+      "alt": null,
+      "size": "standard"
+    },{
+      "value": "→",
+      "alt": null,
+      "size": "standard"
+    }
    ]
 }
 ]
