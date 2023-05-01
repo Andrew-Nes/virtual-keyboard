@@ -6,6 +6,7 @@ import spaceAction from './components/space-action/space-action';
 import arrowsAction from './components/arrows-action/arrows-action';
 import tabAction from './components/tab-action/tab-action';
 import enterAction from './components/enter-action/enter-action';
+import backspaceAction from './components/backspace-action/backspace-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -121,4 +122,11 @@ keyboard.addEventListener('click', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = enter]')
   ) enterAction();
+});
+
+// add backspace action
+keyboard.addEventListener('click', (event) => {
+  if (
+    event.target.closest('.key') === document.querySelector('.key[data-value = backspace]')
+  ) backspaceAction();
 });
