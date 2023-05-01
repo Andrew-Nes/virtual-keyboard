@@ -1,8 +1,9 @@
 import './style.scss';
 import createKey from './components/key/keys';
-import regularKeyPress from './components/regular-key-action/regular-key-action';
+import regularKeyAction from './components/regular-key-action/regular-key-action';
 import capsLockAction from './components/caps-lock-action/caps-lock-action';
 import spaceAction from './components/space-action/space-action';
+import arrowsAction from './components/arrows-action/arrows-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -64,7 +65,7 @@ keyboard.addEventListener('click', (event) => {
   let shift = false;
   if (event.shiftKey) shift = true;
   const target = event.target.closest('.key');
-  regularKeyPress(target, shift, caps);
+  regularKeyAction(target, shift, caps);
 });
 
 // add caps lock action
@@ -78,4 +79,21 @@ window.addEventListener('keydown', (event) => {
 // add space action
 keyboard.addEventListener('click', (event) => {
   if (event.target.closest('.key') === document.querySelector('.spacebar')) spaceAction();
+});
+
+// add arrows actoin
+keyboard.addEventListener('click', (event) => {
+  if (
+    event.target.closest('.key') === document.querySelector('.key[data-value = arrowup]')
+    || event.target.closest('.key') === document.querySelector('.key[data-value = arrowdown]')
+    || event.target.closest('.key') === document.querySelector('.key[data-value = arrowleft]')
+    || event.target.closest('.key') === document.querySelector('.key[data-value = arrowright]')
+  ) arrowsAction(event.target);
+});
+window.addEventListener('keydown', (event) => {
+  if (event.key.includes('Arrow')) {
+    event.preventDefault();
+    const element = document.querySelector(`.key[data-value = ${event.key.toLocaleLowerCase()}]`);
+    arrowsAction(element);
+  }
 });
