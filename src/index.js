@@ -73,7 +73,10 @@ keyboard.addEventListener('click', (event) => {
   if (event.target.closest('.key') === document.querySelector('.key[data-value = capslock]')) capsLockAction();
 });
 window.addEventListener('keydown', (event) => {
-  if (event.key === 'CapsLock') capsLockAction();
+  if (event.key === 'CapsLock') {
+    event.preventDefault();
+    capsLockAction();
+  }
 });
 
 // add space action
