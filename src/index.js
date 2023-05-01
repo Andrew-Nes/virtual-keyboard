@@ -4,6 +4,7 @@ import regularKeyAction from './components/regular-key-action/regular-key-action
 import capsLockAction from './components/caps-lock-action/caps-lock-action';
 import spaceAction from './components/space-action/space-action';
 import arrowsAction from './components/arrows-action/arrows-action';
+import tabAction from './components/tab-action/tab-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -99,4 +100,17 @@ window.addEventListener('keydown', (event) => {
     const element = document.querySelector(`.key[data-value = ${event.key.toLocaleLowerCase()}]`);
     arrowsAction(element);
   }
+});
+
+// add tab action
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Tab') {
+    event.preventDefault();
+    tabAction();
+  }
+});
+keyboard.addEventListener('click', (event) => {
+  if (
+    event.target.closest('.key') === document.querySelector('.key[data-value = tab]')
+  ) tabAction();
 });
