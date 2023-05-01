@@ -2,6 +2,7 @@ import './style.scss';
 import createKey from './components/key/keys';
 import regularKeyPress from './components/regular-key-action/regular-key-action';
 import capsLockAction from './components/caps-lock-action/caps-lock-action';
+import spaceAction from './components/space-action/space-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
@@ -72,4 +73,9 @@ keyboard.addEventListener('click', (event) => {
 });
 window.addEventListener('keydown', (event) => {
   if (event.key === 'CapsLock') capsLockAction();
+});
+
+// add space action
+keyboard.addEventListener('click', (event) => {
+  if (event.target.closest('.key') === document.querySelector('.spacebar')) spaceAction();
 });
