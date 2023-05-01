@@ -3,20 +3,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ESLintPlugin = require('eslint-config-airbnb');
+const EsLintPlugin = require('eslint-webpack-plugin');
 
-const devServer = (isDev) => (!isDev ? {} : {
-  devServer: {
-    open: true,
-    hot: true,
-    port: 8080,
-    static: {
-      directory: path.join(__dirname, 'public'),
+function devServer(isDev) {
+  return (!isDev ? {} : {
+    devServer: {
+      open: true,
+      hot: true,
+      port: 8080,
+      static: {
+        directory: path.join(__dirname, 'public'),
+      },
     },
-  },
-});
+  });
+}
 
-const esLintPlugin = (isDev) => (isDev ? [] : [new ESLintPlugin({ extensions: ['js'] })]);
+const esLintPlugin = (isDev) => (isDev ? [] : [new EsLintPlugin({ extensions: ['js'] })]);
 
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
@@ -57,7 +59,7 @@ module.exports = ({ development }) => ({
     }),
     new CopyPlugin({
       patterns: [
-        { from: './public', to: 'assets' },
+        { from: './public' },
       ],
     }),
     new CleanWebpackPlugin(),
