@@ -40,6 +40,12 @@ keyboard.classList.add('keyboard');
 keyboardContainer.append(keyboard);
 export default { keyboard };
 
+// notifications
+const notes = document.createElement('p');
+notes.classList.add('notes');
+notes.innerHTML = 'Клавиатура выполнена на Windows, язык переключается сочетанием клавиш Alt+Shift';
+page.prepend(notes);
+
 // render keys
 async function renderKeys() {
   keyboard.innerHTML = '';
