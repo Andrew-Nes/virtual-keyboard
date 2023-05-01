@@ -7,10 +7,13 @@ import arrowsAction from './components/arrows-action/arrows-action';
 import tabAction from './components/tab-action/tab-action';
 import enterAction from './components/enter-action/enter-action';
 import backspaceAction from './components/backspace-action/backspace-action';
+import getCursorPosition from './components/get-cursor-position/get-cursor-position';
+import deleteAction from './components/delete-action/delete-action';
 
 const htmlBody = document.body;
 const htmlHead = document.head;
 let language = localStorage.getItem('lang') || 'en';
+let focus = 0;
 
 // favicon
 const favicon = document.createElement('link');
@@ -32,7 +35,15 @@ page.append(keyboardContainer);
 // text area
 const textArea = document.createElement('textarea');
 textArea.classList.add('text-area');
+textArea.setAttribute('autofocus', true);
 keyboardContainer.append(textArea);
+textArea.addEventListener('mouseout', () => {
+  focus = getCursorPosition();
+});
+textArea.addEventListener('blur', () => {
+  textArea.focus();
+  textArea.selectionEnd = focus;
+});
 
 // keyboard
 const keyboard = document.createElement('div');
@@ -65,6 +76,7 @@ renderKeys();
 window.addEventListener('keydown', (event) => {
   const pressedKeys = document.querySelectorAll(`div[data-value = '${event.key.toLowerCase()}']`);
   pressedKeys.forEach((el) => el.classList.add('active'));
+  focus += 1;
 });
 
 window.addEventListener('keyup', (event) => {
@@ -73,44 +85,56 @@ window.addEventListener('keyup', (event) => {
 });
 
 // add regular keys action
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   const caps = document.querySelector('.capslock-indicator').classList.contains('active');
   let shift = false;
   if (event.shiftKey) shift = true;
   const target = event.target.closest('.key');
-  regularKeyAction(target, shift, caps);
+  regularKeyAction(target, shift, caps, focus);
+  focus += 1;
 });
 
 // add caps lock action
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   if (event.target.closest('.key') === document.querySelector('.key[data-value = capslock]')) capsLockAction();
 });
 window.addEventListener('keydown', (event) => {
   if (event.key === 'CapsLock') {
     event.preventDefault();
     capsLockAction();
+    focus -= 1;
   }
 });
 
 // add space action
-keyboard.addEventListener('click', (event) => {
-  if (event.target.closest('.key') === document.querySelector('.spacebar')) spaceAction();
+keyboard.addEventListener('mousedown', (event) => {
+  if (event.target.closest('.key') === document.querySelector('.spacebar')) {
+    focus -= 1;
+    spaceAction(focus);
+    focus += 1;
+  }
 });
 
 // add arrows actoin
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = arrowup]')
     || event.target.closest('.key') === document.querySelector('.key[data-value = arrowdown]')
     || event.target.closest('.key') === document.querySelector('.key[data-value = arrowleft]')
     || event.target.closest('.key') === document.querySelector('.key[data-value = arrowright]')
-  ) arrowsAction(event.target);
+  ) {
+    focus -= 1;
+    arrowsAction(event.target, focus);
+    focus += 1;
+  }
 });
 window.addEventListener('keydown', (event) => {
   if (event.key.includes('Arrow')) {
     event.preventDefault();
     const element = document.querySelector(`.key[data-value = ${event.key.toLocaleLowerCase()}]`);
-    arrowsAction(element);
+    focus -= 1;
+    arrowsAction(element, focus);
+    focus += 1;
   }
 });
 
@@ -118,27 +142,51 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Tab') {
     event.preventDefault();
-    tabAction();
+    event.stopPropagation();
+    focus -= 1;
+    tabAction(focus);
+    focus += 4;
   }
 });
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = tab]')
-  ) tabAction();
+  ) {
+    focus -= 1;
+    tabAction(focus);
+    focus += 4;
+  }
 });
 
 // add enter action
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = enter]')
-  ) enterAction();
+  ) {
+    focus -= 1;
+    enterAction(focus);
+    focus += 1;
+  }
 });
 
 // add backspace action
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   if (
     event.target.closest('.key') === document.querySelector('.key[data-value = backspace]')
-  ) backspaceAction();
+  ) {
+    backspaceAction();
+    focus -= 2;
+  }
+});
+
+// add delete action
+keyboard.addEventListener('mousedown', (event) => {
+  if (
+    event.target.closest('.key') === document.querySelector('.key[data-value = delete]')
+  ) {
+    focus -= 1;
+    deleteAction(focus);
+  }
 });
 
 // language toggle

@@ -1,4 +1,6 @@
-export default function arrowsAction(element) {
+export default function arrowsAction(element, focus) {
   const textArea = document.querySelector('.text-area');
-  textArea.value += element.innerText[0];
+  const back = textArea.value.slice(focus, textArea.value.length);
+  textArea.value = (textArea.value.slice(0, focus) + element.innerText[0]
+  + back);
 }
